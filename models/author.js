@@ -49,6 +49,14 @@ AuthorSchema.virtual('date_of_death_formatted').get(function () {
     : '';
 });
 
+AuthorSchema.virtual('date_of_form').get(function () {
+  return DateTime.fromJSDate(this.date_of_birth).toISODate();
+});
+
+AuthorSchema.virtual('date_of_death_form').get(function () {
+  return DateTime.fromJSDate(this.date_of_death).toISODate();
+});
+
 // Virtual for author's URL
 AuthorSchema.virtual('url').get(function () {
   return '/catalog/author/' + this._id;
